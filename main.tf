@@ -1,16 +1,16 @@
 #this file consists of code for instances and sg
 provider "aws" {
-region = "us-east-1"
-access_key = ""
-secret_key = ""
+region = "us-west-2"
+access_key = "AKIA33ETIGXCRGJQFNHI"
+secret_key = "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"
 }
 
 resource "aws_instance" "one" {
-  ami             = "ami-03c7d01cf4dedc891"
+  ami             = "ami-0ae49954dfb447966"
   instance_type   = "t2.micro"
-  key_name        = "rahamnewkp01"
+  key_name        = "mykey"
   vpc_security_group_ids = [aws_security_group.five.id]
-  availability_zone = "us-east-1a"
+  availability_zone = "us-west-2b"
   user_data       = <<EOF
 #!/bin/bash
 sudo -i
@@ -25,11 +25,11 @@ EOF
 }
 
 resource "aws_instance" "two" {
-  ami             = "ami-03c7d01cf4dedc891"
+  ami             = "ami-0ae49954dfb447966"
   instance_type   = "t2.micro"
-  key_name        = "rahamnewkp01"
+  key_name        = "mykey"
   vpc_security_group_ids = [aws_security_group.five.id]
-  availability_zone = "us-east-1b"
+  availability_zone = "us-west-2b"
   user_data       = <<EOF
 #!/bin/bash
 sudo -i
@@ -44,22 +44,22 @@ EOF
 }
 
 resource "aws_instance" "three" {
-  ami             = "ami-03c7d01cf4dedc891"
+  ami             = "ami-0ae49954dfb447966"
   instance_type   = "t2.micro"
-  key_name        = "rahamnewkp01"
+  key_name        = "mykey"
   vpc_security_group_ids = [aws_security_group.five.id]
-  availability_zone = "us-east-1a"
+  availability_zone = "us-west-2b"
   tags = {
     Name = "app-server-1"
   }
 }
 
 resource "aws_instance" "four" {
-  ami             = "ami-03c7d01cf4dedc891"
+  ami             = "ami-0ae49954dfb447966"
   instance_type   = "t2.micro"
-  key_name        = "rahamnewkp01"
+  key_name        = "mykey"
   vpc_security_group_ids = [aws_security_group.five.id]
-  availability_zone = "us-east-1b"
+  availability_zone = "us-west-2b"
   tags = {
     Name = "app-server-2"
   }
@@ -105,7 +105,7 @@ default = ["user1", "user2", "user3", "user4"]
 }
 
 resource "aws_ebs_volume" "eight" {
- availability_zone = "us-east-1a"
+ availability_zone = "us-west-2b"
   size = 40
   tags = {
     Name = "ebs-001"
